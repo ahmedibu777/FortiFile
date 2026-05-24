@@ -27,7 +27,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: 
+      background-image:
         linear-gradient(0deg, transparent 24%, rgba(0, 217, 255, 0.05) 25%, rgba(0, 217, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.05) 75%, rgba(0, 217, 255, 0.05) 76%, transparent 77%, transparent),
         linear-gradient(90deg, transparent 24%, rgba(0, 217, 255, 0.05) 25%, rgba(0, 217, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 217, 255, 0.05) 75%, rgba(0, 217, 255, 0.05) 76%, transparent 77%, transparent);
       background-size: 50px 50px;
@@ -103,11 +103,19 @@
     .subtitle {
       font-size: 18px;
       color: #a0a0a0;
-      margin-bottom: 30px;
+      margin-bottom: 18px;
       line-height: 1.6;
-      max-width: 600px;
+      max-width: 650px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    .subtitle-note {
+      font-size: 13px;
+      color: #8f99b1;
+      max-width: 680px;
+      margin: 0 auto 26px;
+      line-height: 1.6;
     }
 
     .badge-container {
@@ -137,12 +145,17 @@
       flex-wrap: wrap;
     }
 
-    button {
-      padding: 12px 24px;
-      border: none;
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      user-select: none;
+      padding: 14px 32px;
       border-radius: 6px;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 16px;
+      font-weight: 800;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -150,8 +163,7 @@
     .btn-primary {
       background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
       color: #0a0e27;
-      padding: 14px 32px;
-      font-size: 16px;
+      border: 0;
     }
 
     .btn-primary:hover {
@@ -163,13 +175,33 @@
       background: rgba(0, 217, 255, 0.1);
       color: #00d9ff;
       border: 1px solid rgba(0, 217, 255, 0.3);
-      padding: 14px 32px;
-      font-size: 16px;
     }
 
     .btn-secondary:hover {
       background: rgba(0, 217, 255, 0.2);
       transform: translateY(-2px);
+    }
+
+    .btn-small {
+      padding: 10px 16px;
+      font-size: 13px;
+      background: rgba(0, 217, 255, 0.1);
+      color: #00d9ff;
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .btn-small:hover {
+      background: rgba(0, 217, 255, 0.2);
+    }
+
+    .btn-small:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
     }
 
     /* Demo Section */
@@ -186,15 +218,29 @@
     .demo-title {
       font-size: 24px;
       font-weight: 700;
-      margin-bottom: 30px;
+      margin-bottom: 8px;
       color: #00d9ff;
+    }
+
+    .demo-subtitle {
+      color: #a0a0a0;
+      margin-bottom: 18px;
+      line-height: 1.6;
+      font-size: 14px;
     }
 
     .demo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+    }
+
+    .demo-grid-single {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 16px;
     }
 
     .input-label {
@@ -205,7 +251,7 @@
       display: block;
     }
 
-    textarea, .output-box {
+    textarea, .output-box, input[type="password"], input[type="text"], input[type="file"] {
       background: rgba(10, 14, 39, 0.8);
       border: 1px solid rgba(0, 217, 255, 0.2);
       border-radius: 8px;
@@ -213,43 +259,48 @@
       color: #00d9ff;
       font-family: 'Courier New', monospace;
       font-size: 13px;
-      min-height: 100px;
       width: 100%;
-      resize: vertical;
       outline: none;
       transition: all 0.3s ease;
     }
 
-    textarea:focus {
+    input[type="password"], input[type="text"] {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      padding: 12px 14px;
+      color: #e0e0e0;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    textarea:focus, input[type="password"]:focus, input[type="text"]:focus {
       border-color: rgba(0, 217, 255, 0.6);
       box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
     }
 
     .output-box {
       overflow-y: auto;
-      word-break: break-all;
+      word-break: break-word;
       color: #ffb84d;
       border-color: rgba(255, 184, 77, 0.3);
-      resize: none;
+      min-height: 120px;
+      white-space: pre-wrap;
     }
 
     .demo-buttons {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
-    .btn-small {
-      padding: 10px 16px;
-      font-size: 13px;
-      background: rgba(0, 217, 255, 0.1);
-      color: #00d9ff;
-      border: 1px solid rgba(0, 217, 255, 0.3);
-      border-radius: 6px;
-    }
-
-    .btn-small:hover {
-      background: rgba(0, 217, 255, 0.2);
+    .status {
+      margin-left: auto;
+      font-size: 12px;
+      color: #8f99b1;
     }
 
     /* Features Grid */
@@ -297,7 +348,7 @@
     }
 
     .feature-desc {
-      font-size:  14px;
+      font-size: 14px;
       color: #a0a0a0;
       line-height: 1.5;
     }
@@ -309,6 +360,7 @@
       margin-bottom: 30px;
       border-bottom: 1px solid rgba(0, 217, 255, 0.1);
       padding-bottom: 15px;
+      flex-wrap: wrap;
     }
 
     .tab-btn {
@@ -413,6 +465,13 @@
       color: #fff;
     }
 
+    .warn {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #caa16a;
+      line-height: 1.5;
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 36px;
@@ -425,10 +484,6 @@
       .demo-section {
         padding: 20px;
       }
-
-      .tab-nav {
-        flex-wrap: wrap;
-      }
     }
   </style>
 </head>
@@ -439,39 +494,114 @@
       <div class="lock-icon">🔒</div>
       <h1>FortiFile</h1>
       <p class="subtitle">Military-grade AES-256-GCM encryption for every file. Local. Passworded. Bulletproof.</p>
+      <p class="subtitle-note">
+        This page runs <strong>entirely in your browser</strong>. Files are never uploaded anywhere.
+        Encryption and decryption happen locally using WebCrypto (AES-256-GCM + PBKDF2).
+      </p>
 
       <div class="badge-container">
         <span class="badge">⚡ Java 21</span>
         <span class="badge">🛡️ AES-256-GCM</span>
-        <span class="badge">📦 Zero Dependencies</span>
+        <span class="badge">🔑 PBKDF2 (65,536)</span>
         <span class="badge">🚀 Cross-Platform</span>
       </div>
 
       <div class="cta-buttons">
-        <button class="btn-primary">📥 Download JAR</button>
-        <button class="btn-secondary">📖 View on GitHub</button>
+        <a id="downloadJarLink" class="btn-link btn-primary" href="https://github.com/ahmedibu777/FortiFile/releases" target="_blank" rel="noopener noreferrer">
+          📥 Download JAR
+        </a>
+        <a class="btn-link btn-secondary" href="https://github.com/ahmedibu777/FortiFile" target="_blank" rel="noopener noreferrer">
+          📖 View on GitHub
+        </a>
       </div>
     </div>
 
-    <!-- DEMO SECTION -->
+    <!-- CRYPTO DEMO SECTION -->
     <div class="demo-section">
-      <h3 class="demo-title">🔮 Live Encryption Demo</h3>
-      <p style="color: #a0a0a0; margin-bottom: 20px;">Type something and watch it get encrypted in real-time.</p>
+      <h3 class="demo-title">🔮 Live Crypto Demo (Real AES-256-GCM)</h3>
+      <p class="demo-subtitle">Encrypt/decrypt text or files using a password. Everything stays local in your browser.</p>
 
-      <div class="demo-grid">
-        <div>
-          <label class="input-label">Plaintext (Your Secret)</label>
-          <textarea id="plaintext" placeholder="Type something secret here..."></textarea>
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchCryptoTab(event, 'textTab')">📝 Text</button>
+        <button class="tab-btn" onclick="switchCryptoTab(event, 'fileTab')">📁 File (≤ 10MB)</button>
+      </div>
+
+      <!-- TEXT TAB -->
+      <div id="textTab" class="tab-content active">
+        <div class="demo-grid-single">
+          <div>
+            <label class="input-label">Password</label>
+            <input id="textPassword" type="password" placeholder="Enter a strong password" />
+          </div>
         </div>
-        <div>
-          <label class="input-label">Ciphertext (Encrypted)</label>
-          <div class="output-box" id="ciphertext">Waiting for input...</div>
+
+        <div class="demo-grid">
+          <div>
+            <label class="input-label">Plaintext</label>
+            <textarea id="textPlaintext" placeholder="Type something secret here..."></textarea>
+          </div>
+          <div>
+            <label class="input-label">Ciphertext (FortiFile JSON, Base64)</label>
+            <div class="output-box" id="textCiphertext">Waiting for input...</div>
+          </div>
+        </div>
+
+        <div class="demo-grid">
+          <div>
+            <label class="input-label">Ciphertext to Decrypt (paste here)</label>
+            <textarea id="textCiphertextInput" placeholder="Paste ciphertext JSON here..."></textarea>
+          </div>
+          <div>
+            <label class="input-label">Decrypted Plaintext</label>
+            <div class="output-box" id="textDecrypted">Waiting for input...</div>
+          </div>
+        </div>
+
+        <div class="demo-buttons">
+          <button class="btn-small" id="btnEncryptText">🔐 Encrypt Text</button>
+          <button class="btn-small" id="btnDecryptText">🔓 Decrypt Text</button>
+          <button class="btn-small" onclick="copyText('textCiphertext')">📋 Copy Ciphertext</button>
+          <button class="btn-small" onclick="copyText('textDecrypted')">📋 Copy Plaintext</button>
+          <button class="btn-small" onclick="resetTextDemo()">🔄 Reset</button>
+          <span class="status" id="textStatus"></span>
+        </div>
+
+        <div class="warn">
+          Note: ciphertext is a JSON envelope that includes salt + IV + iteration count + version.
+          Keep it safe along with your password — without the password, data cannot be recovered.
         </div>
       </div>
 
-      <div class="demo-buttons">
-        <button class="btn-small" onclick="copyText('ciphertext')">📋 Copy Encrypted</button>
-        <button class="btn-small" onclick="resetDemo()">🔄 Reset</button>
+      <!-- FILE TAB -->
+      <div id="fileTab" class="tab-content">
+        <div class="demo-grid-single">
+          <div>
+            <label class="input-label">Password</label>
+            <input id="filePassword" type="password" placeholder="Enter a strong password" />
+          </div>
+        </div>
+
+        <div class="demo-grid">
+          <div>
+            <label class="input-label">Choose file to encrypt (≤ 10MB)</label>
+            <input id="encryptFileInput" type="file" />
+          </div>
+          <div>
+            <label class="input-label">Choose .fortifile to decrypt (≤ 10MB)</label>
+            <input id="decryptFileInput" type="file" accept=".fortifile" />
+          </div>
+        </div>
+
+        <div class="demo-buttons">
+          <button class="btn-small" id="btnEncryptFile">🔐 Encrypt & Download (.fortifile)</button>
+          <button class="btn-small" id="btnDecryptFile">🔓 Decrypt & Download (original name)</button>
+          <button class="btn-small" onclick="resetFileDemo()">🔄 Reset</button>
+          <span class="status" id="fileStatus"></span>
+        </div>
+
+        <div class="warn">
+          Your file is processed locally in memory and then immediately downloaded. Nothing is uploaded.
+        </div>
       </div>
     </div>
 
@@ -482,12 +612,12 @@
         <div class="feature-card">
           <span class="feature-icon">🔐</span>
           <div class="feature-name">AES-256-GCM</div>
-          <div class="feature-desc">Military-grade encryption trusted by governments and financial institutions.</div>
+          <div class="feature-desc">Military-grade authenticated encryption (confidentiality + tamper detection).</div>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🔑</span>
           <div class="feature-name">PBKDF2</div>
-          <div class="feature-desc">65,536 iterations with random salt to stop brute-force attacks.</div>
+          <div class="feature-desc">65,536 iterations with random salt to slow brute-force attacks.</div>
         </div>
         <div class="feature-card">
           <span class="feature-icon">📁</span>
@@ -527,20 +657,20 @@
         <h3 style="font-size: 18px; font-weight: 700; color: #00d9ff; margin-bottom: 15px;">Option A: Download & Run (Easiest)</h3>
         <ol style="color: #a0a0a0; line-height: 1.8; padding-left: 20px;">
           <li>Go to <strong style="color: #fff;">Releases</strong> page</li>
-          <li>Download <strong style="color: #fff;">FortiFile-1.0.0.jar</strong></li>
-          <li>You're done! Run it: <code style="color: #00d9ff;">java -jar FortiFile-1.0.0.jar</code></li>
+          <li>Download <strong style="color: #fff;">the latest FortiFile JAR</strong></li>
+          <li>Run it: <code style="color: #00d9ff;">java -jar FortiFile-*.jar</code></li>
         </ol>
       </div>
 
       <div id="console" class="tab-content">
         <h3 style="font-size: 18px; font-weight: 700; color: #00d9ff; margin-bottom: 15px;">Console Mode</h3>
-        <div class="code-block">java -jar FortiFile-1.0.0.jar<button class="copy-btn" onclick="copyCode('java -jar FortiFile-1.0.0.jar')">📋</button></div>
+        <div class="code-block">java -jar FortiFile-*.jar<button class="copy-btn" onclick="copyCode('java -jar FortiFile-*.jar')">📋</button></div>
         <p style="color: #a0a0a0;">This opens the interactive menu where you can encrypt/decrypt files and see live progress.</p>
       </div>
 
       <div id="gui" class="tab-content">
         <h3 style="font-size: 18px; font-weight: 700; color: #00d9ff; margin-bottom: 15px;">GUI Mode</h3>
-        <div class="code-block">java -jar FortiFile-1.0.0.jar --gui<button class="copy-btn" onclick="copyCode('java -jar FortiFile-1.0.0.jar --gui')">📋</button></div>
+        <div class="code-block">java -jar FortiFile-*.jar --gui<button class="copy-btn" onclick="copyCode('java -jar FortiFile-*.jar --gui')">📋</button></div>
         <p style="color: #a0a0a0;">Opens the Swing GUI for point-and-click encryption with file dialogs.</p>
       </div>
 
@@ -565,49 +695,273 @@ mvn clean package<button class="copy-btn" onclick="copyCode('git clone https://g
         <div class="faq-answer">A: Unfortunately, there's no "forgot password" option. Choose a password you'll remember!</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question">Q: How long does encryption take?</div>
-        <div class="faq-answer">A: For most files up to 1 GB, a few seconds. For larger files, it depends on your disk speed. The progress bar keeps you updated.</div>
-      </div>
-      <div class="faq-item">
         <div class="faq-question">Q: Is my data sent to the cloud?</div>
-        <div class="faq-answer">A: No. Everything happens locally on your computer. Your files never leave your machine.</div>
+        <div class="faq-answer">A: No. Everything happens locally on your computer. This demo page also runs locally in your browser.</div>
       </div>
     </div>
 
     <!-- FOOTER -->
     <footer>
-      <p>🔐 FortiFile v1.0.0 | MIT License | Made with ❤️ by <strong>Ahmad Ibrahim</strong></p>
+      <p>🔐 FortiFile | MIT License</p>
       <p style="margin-top: 10px;">
-        <a href="https://github.com/ahmedibu777/FortiFile">GitHub</a> •
-        <a href="https://github.com/ahmedibu777/FortiFile/releases" style="margin-left: 10px;">Releases</a>
+        <a href="https://github.com/ahmedibu777/FortiFile" target="_blank" rel="noopener noreferrer">GitHub</a> •
+        <a href="https://github.com/ahmedibu777/FortiFile/releases" target="_blank" rel="noopener noreferrer" style="margin-left: 10px;">Releases</a>
       </p>
     </footer>
   </div>
 
   <script>
-    // Live encryption demo
-    const plaintextInput = document.getElementById('plaintext');
-    const ciphertextBox = document.getElementById('ciphertext');
+    // --- FortiFile Browser Crypto ---
+    // AES-256-GCM + PBKDF2(SHA-256)
+    const FORTIFILE_VERSION = 1;
+    const PBKDF2_ITERATIONS = 65536;
+    const PBKDF2_HASH = 'SHA-256';
+    const AES_ALGO = 'AES-GCM';
+    const AES_KEY_BITS = 256;
+    const SALT_BYTES = 16;
+    const IV_BYTES = 12;
 
-    plaintextInput.addEventListener('input', () => {
-      const text = plaintextInput.value;
-      if (!text) {
-        ciphertextBox.textContent = 'Waiting for input...';
-        return;
+    const enc = new TextEncoder();
+    const dec = new TextDecoder();
+
+    function bytesToB64(bytes) {
+      let binary = '';
+      const chunkSize = 0x8000;
+      for (let i = 0; i < bytes.length; i += chunkSize) {
+        const chunk = bytes.subarray(i, i + chunkSize);
+        binary += String.fromCharCode(...chunk);
       }
-      
-      // Simulate encryption with Base64 + salt
-      const encoded = btoa(text);
-      const salted = 'salt_16bytes_' + encoded;
-      const truncated = salted.slice(0, 60) + '...';
-      ciphertextBox.textContent = truncated;
-    });
-
-    function resetDemo() {
-      plaintextInput.value = '';
-      ciphertextBox.textContent = 'Waiting for input...';
+      return btoa(binary);
     }
 
+    function b64ToBytes(b64) {
+      const binary = atob(b64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      return bytes;
+    }
+
+    function randomBytes(n) {
+      const out = new Uint8Array(n);
+      crypto.getRandomValues(out);
+      return out;
+    }
+
+    async function deriveKey(password, saltBytes, iterations) {
+      const keyMaterial = await crypto.subtle.importKey(
+        'raw',
+        enc.encode(password),
+        'PBKDF2',
+        false,
+        ['deriveKey']
+      );
+
+      return crypto.subtle.deriveKey(
+        {
+          name: 'PBKDF2',
+          salt: saltBytes,
+          iterations,
+          hash: PBKDF2_HASH,
+        },
+        keyMaterial,
+        { name: AES_ALGO, length: AES_KEY_BITS },
+        false,
+        ['encrypt', 'decrypt']
+      );
+    }
+
+    async function encryptBytes(password, plainBytes) {
+      const salt = randomBytes(SALT_BYTES);
+      const iv = randomBytes(IV_BYTES);
+      const key = await deriveKey(password, salt, PBKDF2_ITERATIONS);
+
+      const cipherBuf = await crypto.subtle.encrypt(
+        { name: AES_ALGO, iv },
+        key,
+        plainBytes
+      );
+
+      return {
+        v: FORTIFILE_VERSION,
+        alg: 'AES-256-GCM',
+        kdf: 'PBKDF2',
+        hash: PBKDF2_HASH,
+        iter: PBKDF2_ITERATIONS,
+        salt: bytesToB64(salt),
+        iv: bytesToB64(iv),
+        ct: bytesToB64(new Uint8Array(cipherBuf)),
+      };
+    }
+
+    async function decryptEnvelope(password, envelope) {
+      if (!envelope || typeof envelope !== 'object') {
+        throw new Error('Invalid ciphertext envelope.');
+      }
+      if (!envelope.salt || !envelope.iv || !envelope.ct || !envelope.iter) {
+        throw new Error('Ciphertext missing required fields.');
+      }
+
+      const salt = b64ToBytes(envelope.salt);
+      const iv = b64ToBytes(envelope.iv);
+      const ctBytes = b64ToBytes(envelope.ct);
+      const key = await deriveKey(password, salt, Number(envelope.iter));
+
+      const plainBuf = await crypto.subtle.decrypt(
+        { name: AES_ALGO, iv },
+        key,
+        ctBytes
+      );
+
+      return new Uint8Array(plainBuf);
+    }
+
+    function downloadBytes(bytes, filename, mime = 'application/octet-stream') {
+      const blob = new Blob([bytes], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function formatBytes(n) {
+      if (n < 1024) return `${n} B`;
+      if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+      return `${(n / (1024 * 1024)).toFixed(2)} MB`;
+    }
+
+    // --- UI: Text ---
+    const textPassword = document.getElementById('textPassword');
+    const textPlaintext = document.getElementById('textPlaintext');
+    const textCiphertext = document.getElementById('textCiphertext');
+    const textCiphertextInput = document.getElementById('textCiphertextInput');
+    const textDecrypted = document.getElementById('textDecrypted');
+    const textStatus = document.getElementById('textStatus');
+
+    document.getElementById('btnEncryptText').addEventListener('click', async () => {
+      try {
+        textStatus.textContent = 'Encrypting...';
+        const pwd = textPassword.value;
+        if (!pwd) throw new Error('Please enter a password.');
+
+        const pt = textPlaintext.value;
+        if (!pt) throw new Error('Please enter plaintext.');
+
+        const envelope = await encryptBytes(pwd, enc.encode(pt));
+        const json = JSON.stringify(envelope);
+        textCiphertext.textContent = json;
+        textCiphertextInput.value = json;
+        textStatus.textContent = 'Encrypted.';
+      } catch (e) {
+        textStatus.textContent = `Error: ${e.message || e}`;
+      }
+    });
+
+    document.getElementById('btnDecryptText').addEventListener('click', async () => {
+      try {
+        textStatus.textContent = 'Decrypting...';
+        const pwd = textPassword.value;
+        if (!pwd) throw new Error('Please enter a password.');
+
+        const raw = textCiphertextInput.value;
+        if (!raw) throw new Error('Please paste ciphertext JSON.');
+
+        let envelope;
+        try {
+          envelope = JSON.parse(raw);
+        } catch {
+          throw new Error('Ciphertext is not valid JSON.');
+        }
+
+        const plainBytes = await decryptEnvelope(pwd, envelope);
+        const out = dec.decode(plainBytes);
+        textDecrypted.textContent = out;
+        textStatus.textContent = 'Decrypted.';
+      } catch (e) {
+        textStatus.textContent = `Error: ${e.message || e}`;
+      }
+    });
+
+    function resetTextDemo() {
+      textPlaintext.value = '';
+      textCiphertext.textContent = 'Waiting for input...';
+      textCiphertextInput.value = '';
+      textDecrypted.textContent = 'Waiting for input...';
+      textStatus.textContent = '';
+    }
+
+    // --- UI: File ---
+    const encryptFileInput = document.getElementById('encryptFileInput');
+    const decryptFileInput = document.getElementById('decryptFileInput');
+    const filePassword = document.getElementById('filePassword');
+    const fileStatus = document.getElementById('fileStatus');
+
+    const MAX_FILE_BYTES = 10 * 1024 * 1024;
+
+    document.getElementById('btnEncryptFile').addEventListener('click', async () => {
+      try {
+        fileStatus.textContent = 'Encrypting file...';
+        const pwd = filePassword.value;
+        if (!pwd) throw new Error('Please enter a password.');
+
+        const file = encryptFileInput.files && encryptFileInput.files[0];
+        if (!file) throw new Error('Please choose a file to encrypt.');
+        if (file.size > MAX_FILE_BYTES) throw new Error(`File too large (${formatBytes(file.size)}). Max is 10MB.`);
+
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        const envelope = await encryptBytes(pwd, bytes);
+
+        // Store original filename + MIME for nice restore.
+        envelope.name = file.name;
+        envelope.type = file.type || 'application/octet-stream';
+
+        const outBytes = enc.encode(JSON.stringify(envelope));
+        downloadBytes(outBytes, `${file.name}.fortifile`, 'application/json');
+        fileStatus.textContent = `Encrypted & downloaded (${formatBytes(file.size)}).`;
+      } catch (e) {
+        fileStatus.textContent = `Error: ${e.message || e}`;
+      }
+    });
+
+    document.getElementById('btnDecryptFile').addEventListener('click', async () => {
+      try {
+        fileStatus.textContent = 'Decrypting file...';
+        const pwd = filePassword.value;
+        if (!pwd) throw new Error('Please enter a password.');
+
+        const file = decryptFileInput.files && decryptFileInput.files[0];
+        if (!file) throw new Error('Please choose a .fortifile to decrypt.');
+        if (file.size > MAX_FILE_BYTES) throw new Error(`File too large (${formatBytes(file.size)}). Max is 10MB.`);
+
+        const rawText = await file.text();
+        let envelope;
+        try {
+          envelope = JSON.parse(rawText);
+        } catch {
+          throw new Error('Invalid .fortifile format (not JSON).');
+        }
+
+        const plainBytes = await decryptEnvelope(pwd, envelope);
+        const outName = envelope.name || file.name.replace(/\.fortifile$/i, '') || 'decrypted.bin';
+        const outType = envelope.type || 'application/octet-stream';
+        downloadBytes(plainBytes, outName, outType);
+
+        fileStatus.textContent = `Decrypted & downloaded (${formatBytes(plainBytes.length)}).`;
+      } catch (e) {
+        fileStatus.textContent = `Error: ${e.message || e}`;
+      }
+    });
+
+    function resetFileDemo() {
+      encryptFileInput.value = '';
+      decryptFileInput.value = '';
+      fileStatus.textContent = '';
+    }
+
+    // --- Utility UI ---
     function copyText(elementId) {
       const element = document.getElementById(elementId);
       const text = element.textContent;
@@ -623,18 +977,41 @@ mvn clean package<button class="copy-btn" onclick="copyCode('git clone https://g
     }
 
     function switchTab(event, tabName) {
-      // Hide all tabs
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
-      // Show selected tab
       document.getElementById(tabName).classList.add('active');
       event.target.classList.add('active');
     }
+
+    function switchCryptoTab(event, tabId) {
+      // Only switch within demo-section tabs
+      const demo = event.target.closest('.demo-section');
+      demo.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      demo.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // --- Download JAR button: try to point to latest release asset ---
+    (async function hydrateDownloadJarLink() {
+      try {
+        const res = await fetch('https://api.github.com/repos/ahmedibu777/FortiFile/releases/latest');
+        if (!res.ok) return;
+        const release = await res.json();
+        if (!release || !Array.isArray(release.assets)) return;
+
+        const jar = release.assets.find(a => (a && a.name && a.name.toLowerCase().endsWith('.jar')));
+        if (jar && jar.browser_download_url) {
+          const link = document.getElementById('downloadJarLink');
+          link.href = jar.browser_download_url;
+          link.title = `Download ${jar.name}`;
+        }
+      } catch {
+        // ignore - fallback remains /releases
+      }
+    })();
   </script>
 </body>
 </html>
