@@ -303,6 +303,90 @@
       color: #8f99b1;
     }
 
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 720px;
+      border-radius: 14px;
+      background: rgba(10, 14, 39, 0.96);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 18px 18px 10px;
+      border-bottom: 1px solid rgba(0, 217, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 900;
+      color: #00d9ff;
+    }
+
+    .modal-close {
+      background: rgba(0, 217, 255, 0.08);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      color: #00d9ff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(0, 217, 255, 0.16);
+    }
+
+    .modal-body {
+      padding: 18px;
+      color: #d2d7e6;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .modal-body h4 {
+      color: #ffffff;
+      margin: 16px 0 8px;
+      font-size: 15px;
+    }
+
+    .modal-body code {
+      color: #00d9ff;
+    }
+
+    .modal-actions {
+      padding: 0 18px 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .modal-actions a {
+      text-decoration: none;
+    }
+
     /* Features Grid */
     h2 {
       font-size: 32px;
@@ -605,6 +689,38 @@
       </div>
     </div>
 
+    <!-- "Too big" modal -->
+    <div id="bigFileModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="bigFileModalTitle">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-title" id="bigFileModalTitle">Large file?</div>
+          <button class="modal-close" type="button" onclick="closeBigFileModal()">Close</button>
+        </div>
+        <div class="modal-body">
+          <p>
+            This browser demo is limited to <strong>10MB</strong> to keep it fast and reliable.
+            For larger files, run FortiFile locally and encrypt/decrypt without limits.
+          </p>
+
+          <h4>Run locally (recommended)</h4>
+          <ol style="padding-left: 18px;">
+            <li>Download the latest JAR from the <a href="https://github.com/ahmedibu777/FortiFile/releases" target="_blank" rel="noopener noreferrer">Releases</a> page.</li>
+            <li>Make sure Java is installed: <code>java -version</code></li>
+            <li>Run: <code>java -jar FortiFile-*.jar</code></li>
+            <li>(Optional GUI) Run: <code>java -jar FortiFile-*.jar --gui</code></li>
+          </ol>
+
+          <p style="margin-top: 10px; color: #8f99b1;">
+            Tip: the local app can encrypt very large files using streaming I/O.
+          </p>
+        </div>
+        <div class="modal-actions">
+          <a class="btn-link btn-primary" href="https://github.com/ahmedibu777/FortiFile/releases" target="_blank" rel="noopener noreferrer">📥 Go to Releases</a>
+          <a class="btn-link btn-secondary" href="#build" onclick="closeBigFileModal()">🔨 Build from source</a>
+        </div>
+      </div>
+    </div>
+
     <!-- FEATURES -->
     <div>
       <h2>Why FortiFile?</h2>
@@ -643,14 +759,14 @@
     </div>
 
     <!-- INSTALLATION -->
-    <div style="margin-top: 80px; margin-bottom: 60px;">
+    <div id="build" style="margin-top: 80px; margin-bottom: 60px;">
       <h2>Get Started</h2>
 
       <div class="tab-nav">
         <button class="tab-btn active" onclick="switchTab(event, 'quick')">⚡ Quick Start</button>
         <button class="tab-btn" onclick="switchTab(event, 'console')">💻 Console</button>
         <button class="tab-btn" onclick="switchTab(event, 'gui')">🖥️ GUI Mode</button>
-        <button class="tab-btn" onclick="switchTab(event, 'build')">🔨 Build</button>
+        <button class="tab-btn" onclick="switchTab(event, 'buildTab')">🔨 Build</button>
       </div>
 
       <div id="quick" class="tab-content active">
@@ -674,7 +790,7 @@
         <p style="color: #a0a0a0;">Opens the Swing GUI for point-and-click encryption with file dialogs.</p>
       </div>
 
-      <div id="build" class="tab-content">
+      <div id="buildTab" class="tab-content">
         <h3 style="font-size: 18px; font-weight: 700; color: #00d9ff; margin-bottom: 15px;">Build from Source</h3>
         <div class="code-block">git clone https://github.com/ahmedibu777/FortiFile.git
 cd FortiFile
@@ -833,6 +949,28 @@ mvn clean package<button class="copy-btn" onclick="copyCode('git clone https://g
       return `${(n / (1024 * 1024)).toFixed(2)} MB`;
     }
 
+    // --- Modal ---
+    function showBigFileModal() {
+      const el = document.getElementById('bigFileModal');
+      el.classList.add('show');
+    }
+
+    function closeBigFileModal() {
+      const el = document.getElementById('bigFileModal');
+      el.classList.remove('show');
+    }
+
+    window.closeBigFileModal = closeBigFileModal;
+
+    // Close modal on backdrop click or ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeBigFileModal();
+    });
+    document.addEventListener('click', (e) => {
+      const backdrop = document.getElementById('bigFileModal');
+      if (e.target === backdrop) closeBigFileModal();
+    });
+
     // --- UI: Text ---
     const textPassword = document.getElementById('textPassword');
     const textPlaintext = document.getElementById('textPlaintext');
@@ -900,6 +1038,25 @@ mvn clean package<button class="copy-btn" onclick="copyCode('git clone https://g
     const fileStatus = document.getElementById('fileStatus');
 
     const MAX_FILE_BYTES = 10 * 1024 * 1024;
+    const BIG_FILE_HINT_BYTES = 8 * 1024 * 1024;
+
+    function maybeWarnLargeFile(file) {
+      if (!file) return;
+      if (file.size >= BIG_FILE_HINT_BYTES) {
+        // gentle hint even if within max
+        showBigFileModal();
+      }
+    }
+
+    encryptFileInput.addEventListener('change', () => {
+      const file = encryptFileInput.files && encryptFileInput.files[0];
+      maybeWarnLargeFile(file);
+    });
+
+    decryptFileInput.addEventListener('change', () => {
+      const file = decryptFileInput.files && decryptFileInput.files[0];
+      maybeWarnLargeFile(file);
+    });
 
     document.getElementById('btnEncryptFile').addEventListener('click', async () => {
       try {
@@ -909,7 +1066,10 @@ mvn clean package<button class="copy-btn" onclick="copyCode('git clone https://g
 
         const file = encryptFileInput.files && encryptFileInput.files[0];
         if (!file) throw new Error('Please choose a file to encrypt.');
-        if (file.size > MAX_FILE_BYTES) throw new Error(`File too large (${formatBytes(file.size)}). Max is 10MB.`);
+        if (file.size > MAX_FILE_BYTES) {
+          showBigFileModal();
+          throw new Error(`File too large (${formatBytes(file.size)}). Max is 10MB in-browser.`);
+        }
 
         const bytes = new Uint8Array(await file.arrayBuffer());
         const envelope = await encryptBytes(pwd, bytes);
@@ -934,7 +1094,10 @@ mvn clean package<button class="copy-btn" onclick="copyCode('git clone https://g
 
         const file = decryptFileInput.files && decryptFileInput.files[0];
         if (!file) throw new Error('Please choose a .fortifile to decrypt.');
-        if (file.size > MAX_FILE_BYTES) throw new Error(`File too large (${formatBytes(file.size)}). Max is 10MB.`);
+        if (file.size > MAX_FILE_BYTES) {
+          showBigFileModal();
+          throw new Error(`File too large (${formatBytes(file.size)}). Max is 10MB in-browser.`);
+        }
 
         const rawText = await file.text();
         let envelope;
