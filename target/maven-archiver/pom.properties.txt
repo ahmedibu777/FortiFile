@@ -1,0 +1,3 @@
+artifactId=fortifile
+groupId=com.fortifile
+version=1.0.0
